@@ -5,3 +5,9 @@ function CreateNode(data, left = null, right = null) {
         right
     };
 }
+
+function Tree(root = null) {
+
+}
+
+export { Tree };
