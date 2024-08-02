@@ -10,6 +10,7 @@ function CreateNode(data, left = null, right = null) {
 
 function Tree() {
     const { sortArray, removeDuplicate } = ArrayMethod();
+    let root = null;
 
     // Convert the sorted, unique array to a balanced BST
     const buildTree = (arr) => {
@@ -23,7 +24,7 @@ function Tree() {
 
         // Initialize the root node with the middle element
         const mid = Math.floor(treeArr.length / 2);
-        const root = CreateNode(treeArr[mid]);
+        root = CreateNode(treeArr[mid]);
 
         // Initialize the queue with the root node and the initial subarray ranges
         const q = [[root, [0, mid - 1]], [root, [mid + 1, treeArr.length - 1]]];
@@ -57,7 +58,7 @@ function Tree() {
     };
 
     // Print the tree in a structured format (for debugging and visualization)
-    const prettyPrint = (node, prefix = "", isLeft = true) => {
+    const prettyPrint = (node = root, prefix = "", isLeft = true) => {
         if (node === null) {
             return;
         }
@@ -70,10 +71,40 @@ function Tree() {
         if (node.left !== null) {
             prettyPrint(node.left, `${prefix}${isLeft ? "    " : "│   "}`, true);
         }
+
+        return true;
+    };
+
+    // Insert a value into the BST
+    const insert = (value) => {
+        if (!Number.isInteger(value)) {
+            console.error('Value must be an integer');
+            return false;
+        }
+
+        // Helper function to recursively insert a value
+        const insertRecursively = (node, value) => {
+            if (node === null) {
+                return CreateNode(value);
+            }
+
+            if (value < node.data) {
+                node.left = insertRecursively(node.left, value);
+            } else if (value > node.data) {
+                node.right = insertRecursively(node.right, value);
+            }
+
+            return node;
+        };
+
+        root = insertRecursively(root, value);
+        return true;
     };
 
     return {
-        buildTree
+        buildTree,
+        prettyPrint,
+        insert
     };
 }
 
