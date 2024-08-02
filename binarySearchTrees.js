@@ -1,5 +1,7 @@
-function show() {
-    return 'Ok!';
+function CreateNode(data, left = null, right = null) {
+    return {
+        data,
+        left,
+        right
+    };
 }
-
-export { show };
