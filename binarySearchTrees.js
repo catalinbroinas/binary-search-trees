@@ -101,10 +101,69 @@ function Tree() {
         return true;
     };
 
+    // Delete item from the BST
+    const deleteItem = (value) => {
+        if (!Number.isInteger(value)) {
+            console.error('Value must be an integer');
+            return false;
+        }
+
+        // Recursive function to delete a node
+        const deleteRecursively = (node, value) => {
+            if (node === null) {
+                return node;
+            }
+
+            if (value < node.data) {
+                node.left = deleteRecursively(node.left, value);
+            } else if (value > node.data) {
+                node.right = deleteRecursively(node.right, value);
+            } else {
+                // Node with no children
+                if (node.left === null && node.right === null) {
+                    return null;
+                }
+
+                // Node with one child
+                if (node.left === null) {
+                    return node.right;
+                } else if (node.right === null) {
+                    return node.left;
+                }
+
+                // Node with two children: Get the inorder successor
+                const minValueNode = findMinValue(node.right);
+
+                // Copy the successor's content to this node
+                node.data = minValueNode.data;
+
+                // Delete the successor
+                node.right = deleteRecursively(node.right, minValueNode.data);
+            }
+
+            // Returns the updated node
+            return node;
+        };
+
+        // Find the smallest node in a subtree
+        const findMinValue = (node) => {
+            let current = node;
+            while (current.left !== null) {
+                current = current.left;
+            }
+            return current;
+        };
+
+        // Update root
+        root = deleteRecursively(root, value);
+        return true;
+    };
+
     return {
         buildTree,
         prettyPrint,
-        insert
+        insert,
+        deleteItem
     };
 }
 
