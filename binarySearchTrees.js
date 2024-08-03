@@ -159,11 +159,39 @@ function Tree() {
         return true;
     };
 
+    // Find a node with the specified value
+    const find = (value) => {
+        if (!Number.isInteger(value)) {
+            console.error('Value must be an integer');
+            return false;
+        }
+
+        // Helper function for recursive search
+        const findRecursively = (node, value) => {
+            if (node === null) {
+                return false;
+            }
+
+            if (value === node.data) {
+                return true;
+            }
+
+            if (value < node.data) {
+                return findRecursively(node.left, value);
+            } else {
+                return findRecursively(node.right, value);
+            }
+        };
+
+        return findRecursively(root, value);
+    };
+
     return {
         buildTree,
         prettyPrint,
         insert,
-        deleteItem
+        deleteItem,
+        find
     };
 }
 
