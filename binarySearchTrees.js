@@ -186,12 +186,47 @@ function Tree() {
         return findRecursively(root, value);
     };
 
+    const levelOrder = (callback) => {
+        if (typeof callback !== 'function') {
+            console.error('Callback must be a function');
+            return;
+        }
+
+        // Check if the tree is empty
+        if (root === null) {
+            return;
+        }
+
+        // Initialize a queue with the root node
+        const queue = [root];
+
+        // Process nodes until the queue is empty
+        while (queue.length > 0) {
+            // Dequeue the front node
+            const node = queue.shift();
+
+            // Call the callback function on the current node
+            callback(node);
+
+            // Enqueue the left child if it exists
+            if (node.left !== null) {
+                queue.push(node.left);
+            }
+
+            // Enqueue the right child if it exists
+            if (node.right !== null) {
+                queue.push(node.right);
+            }
+        }
+    };
+
     return {
         buildTree,
         prettyPrint,
         insert,
         deleteItem,
-        find
+        find,
+        levelOrder
     };
 }
 
