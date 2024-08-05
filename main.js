@@ -8,7 +8,8 @@ const {
     find,
     levelOrder,
     inOrder,
-    preOrder
+    preOrder,
+    postOrder
 } = Tree();
 
 const myArr = [1, 7, 4, 9, 2, 3, 1, 2, 3, 4, 5, 6, 6, 6, 21, 12];
@@ -35,5 +36,6 @@ console.log(find(0));
 levelOrder(prettyPrint);    // Level order
 
 // Binary Tree Traversal: Depth-first traversal
-inOrder(prettyPrint);   // In order
-preOrder(prettyPrint);  // Pre order
+inOrder(prettyPrint);       // In order
+preOrder(prettyPrint);      // Pre order
+postOrder(prettyPrint);     // Post order
