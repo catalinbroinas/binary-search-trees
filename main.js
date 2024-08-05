@@ -10,7 +10,8 @@ const {
     inOrder,
     preOrder,
     postOrder,
-    toArray
+    toArray,
+    height
 } = Tree();
 
 const myArr = [1, 7, 4, 9, 2, 3, 1, 2, 3, 4, 5, 6, 6, 6, 21, 12];
@@ -45,3 +46,8 @@ const postOrderArray = toArray(postOrder);
 console.log(inOrderArray);
 console.log(preOrderArray);
 console.log(postOrderArray);
+
+// Find the node with value 6
+const myNode = 6;
+const heightOfNode = height(myNode);
+console.log(`Height of the '${myNode}' node is ${heightOfNode}.`);
