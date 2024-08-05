@@ -248,6 +248,33 @@ function Tree() {
         inOrderRecursively(root);
     };
 
+    // Depth-first traversal: pre-order
+    const preOrder = (callback) => {
+        if (typeof callback !== 'function') {
+            console.error('Callback must be a function');
+            return;
+        }
+
+        // Helper function for recursive in-order traversal
+        const preOrderRecursively = (node) => {
+            if (node === null) {
+                return;
+            }
+
+            // Process current node
+            callback(node);
+
+            // Traverse left subtree
+            preOrderRecursively(node.left);
+
+            // Traverse right subtree
+            preOrderRecursively(node.right);
+        };
+
+        // Start recursion from the root node
+        preOrderRecursively(root);
+    };
+
     return {
         buildTree,
         prettyPrint,
@@ -255,7 +282,8 @@ function Tree() {
         deleteItem,
         find,
         levelOrder,
-        inOrder
+        inOrder,
+        preOrder
     };
 }
 
