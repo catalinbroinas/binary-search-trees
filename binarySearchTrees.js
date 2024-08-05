@@ -302,6 +302,21 @@ function Tree() {
         postOrderRecursively(root);
     };
 
+    // Create an array with all nodes using the specified traversal method
+    const toArray = (traverse) => {
+        const nodes = [];
+
+        // Define a callback function that adds node data to the array
+        const callback = (node) => {
+            nodes.push(node.data);
+        };
+
+        // Call the traversal function with the callback to populate the array
+        traverse(callback);
+
+        return nodes;
+    };
+
     return {
         buildTree,
         prettyPrint,
@@ -311,7 +326,8 @@ function Tree() {
         levelOrder,
         inOrder,
         preOrder,
-        postOrder
+        postOrder,
+        toArray
     };
 }
 
