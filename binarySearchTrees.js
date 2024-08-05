@@ -186,6 +186,7 @@ function Tree() {
         return findRecursively(root, value);
     };
 
+    // Breadth-first traversal: level-order
     const levelOrder = (callback) => {
         if (typeof callback !== 'function') {
             console.error('Callback must be a function');
@@ -220,13 +221,41 @@ function Tree() {
         }
     };
 
+    // Depth-first traversal: In-order
+    const inOrder = (callback) => {
+        if (typeof callback !== 'function') {
+            console.error('Callback must be a function');
+            return;
+        }
+
+        // Helper function for recursive in-order traversal
+        const inOrderRecursively = (node) => {
+            if (node === null) {
+                return;
+            }
+
+            // Traverse left subtree
+            inOrderRecursively(node.left);
+
+            // Process current node
+            callback(node);
+
+            // Traverse right subtree
+            inOrderRecursively(node.right);
+        };
+
+        // Start recursion from the root node
+        inOrderRecursively(root);
+    };
+
     return {
         buildTree,
         prettyPrint,
         insert,
         deleteItem,
         find,
-        levelOrder
+        levelOrder,
+        inOrder
     };
 }
 
