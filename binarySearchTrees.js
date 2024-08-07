@@ -169,7 +169,7 @@ function Tree() {
         // Helper function for recursive search
         const findRecursively = (node, value) => {
             if (node === null) {
-                return false;
+                return null;
             }
 
             if (value === node.data) {
