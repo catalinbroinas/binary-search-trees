@@ -14,7 +14,8 @@ const {
     heightOfTree,
     height,
     depth,
-    isBalanced
+    isBalanced,
+    rebalance
 } = Tree();
 
 const myArr = [1, 7, 4, 9, 2, 3, 1, 2, 3, 4, 5, 6, 6, 6, 21, 12];
@@ -79,4 +80,18 @@ deleteItem(17);
 // Check if the tree is balanced and print the result
 console.log('Tree after remove a node is:');
 console.log(prettyPrint());
+console.log('The tree is balanced:', isBalanced());
+
+// Insert nodes for to unbalanced tree
+insert(17);
+insert(16);
+
+// Check if the tree is balanced and print the result
+console.log('Tree after insert two nodes is:');
+console.log(prettyPrint());
+console.log('The tree is balanced:', isBalanced());
+
+// Rebalanced the tree and print new result
+console.log('Tree after balanced is:');
+rebalance();
 console.log('The tree is balanced:', isBalanced());

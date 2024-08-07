@@ -408,6 +408,41 @@ function Tree() {
         return getHeight(root) !== null;
     };
 
+    // If the tree is unbalanced, rebalanced the tree
+    const rebalance = () => {
+        if (root === null) {
+            console.warn('Tree is empty');
+            return true;
+        }
+
+        if (isBalanced()) {
+            console.warn('Tree is already balance');
+            return true;
+        }
+
+        // Get an array with all values from the tree
+        const getAllValues = (node) => {
+            const values = [];
+
+            const traverse = (n) => {
+                if (n === null) return;
+                traverse(n.left);
+                values.push(n.data);
+                traverse(n.right);
+            };
+
+            traverse(node);
+
+            return values;
+        };
+
+        // Rebalance the tree
+        const arrValues = getAllValues(root);
+        root = buildTree(arrValues);
+
+        console.log('Tree has been rebalanced.');
+    };
+
     return {
         buildTree,
         prettyPrint,
@@ -422,7 +457,8 @@ function Tree() {
         heightOfTree,
         height,
         depth,
-        isBalanced
+        isBalanced,
+        rebalance
     };
 }
 
