@@ -365,6 +365,19 @@ function Tree() {
         return heightRecursively(node);
     };
 
+    // Depth of the specified node
+    const depth = (node) => {
+        if (node === null) {
+            console.error('Node must be a valid node.');
+            return null;
+        }
+
+        const treeHeight = heightOfTree();
+        const nodeHeight = height(node);
+
+        return treeHeight - nodeHeight;
+    };
+
     return {
         buildTree,
         prettyPrint,
@@ -377,7 +390,8 @@ function Tree() {
         postOrder,
         toArray,
         heightOfTree,
-        height
+        height,
+        depth
     };
 }
 

@@ -12,7 +12,8 @@ const {
     postOrder,
     toArray,
     heightOfTree,
-    height
+    height,
+    depth
 } = Tree();
 
 const myArr = [1, 7, 4, 9, 2, 3, 1, 2, 3, 4, 5, 6, 6, 6, 21, 12];
@@ -53,6 +54,15 @@ const treeHeight = heightOfTree();
 console.log(`Height of the tree is ${treeHeight}.`);
 
 // Print the height of the specified node
-const node = find(3);
+let node = find(3);
 const nodeHeight = height(node);
-console.log(`Height of the "${node.data}" node is ${nodeHeight}.`);
+if (node) {
+    console.log(`Height of the "${node.data}" node is ${nodeHeight}.`);
+}
+
+// Print the depth of the specified node
+node = find(9);
+const depthNode = depth(node);
+if (node) {
+    console.log(`Depth of the "${node.data}" node is ${depthNode}.`);
+}
