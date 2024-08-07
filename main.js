@@ -11,7 +11,8 @@ const {
     preOrder,
     postOrder,
     toArray,
-    heightOfTree
+    heightOfTree,
+    height
 } = Tree();
 
 const myArr = [1, 7, 4, 9, 2, 3, 1, 2, 3, 4, 5, 6, 6, 6, 21, 12];
@@ -48,5 +49,10 @@ console.log(preOrderArray);
 console.log(postOrderArray);
 
 // Print the height of the tree
-const height = heightOfTree();
-console.log(`Height of the tree is ${height}.`);
+const treeHeight = heightOfTree();
+console.log(`Height of the tree is ${treeHeight}.`);
+
+// Print the height of the specified node
+const node = find(3);
+const nodeHeight = height(node);
+console.log(`Height of the "${node.data}" node is ${nodeHeight}.`);

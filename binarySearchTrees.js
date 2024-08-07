@@ -173,7 +173,7 @@ function Tree() {
             }
 
             if (value === node.data) {
-                return true;
+                return node;
             }
 
             if (value < node.data) {
@@ -341,6 +341,30 @@ function Tree() {
         return heightRecursively(root);
     };
 
+    // Height of the specified node
+    const height = (node) => {
+        if (node === null) {
+            console.error('Node must be a valid node.');
+            return null;
+        }
+
+        // Helper function to recursively find the height of the node
+        const heightRecursively = (node) => {
+            if (node === null) {
+                return -1;
+            }
+
+            // Recursively calculate the height of left and right subtrees
+            const leftHeight = heightRecursively(node.left);
+            const rightHeight = heightRecursively(node.right);
+
+            // Return the maximum of the two heights plus one (for the current node)
+            return Math.max(leftHeight, rightHeight) + 1;
+        };
+
+        return heightRecursively(node);
+    };
+
     return {
         buildTree,
         prettyPrint,
@@ -352,7 +376,8 @@ function Tree() {
         preOrder,
         postOrder,
         toArray,
-        heightOfTree
+        heightOfTree,
+        height
     };
 }
 
