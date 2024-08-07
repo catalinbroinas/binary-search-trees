@@ -317,21 +317,22 @@ function Tree() {
         return nodes;
     };
 
-    // Height of the specified node
-    const height = (node) => {
-        if (node === null) {
-            return -1;
+    // Height of the tree
+    const heightOfTree = () => {
+        if (root === null) {
+            console.warn('Tree is empty')
+            return;
         }
 
-        // Helper function to recursively find the height of the node
-        const heightRecursively = (currentNode) => {
-            if (currentNode === null) {
+        // Helper function to recursively calculate the height of the tree
+        const heightRecursively = (node) => {
+            if (node === null) {
                 return -1;
             }
 
             // Recursively calculate the height of left and right subtrees
-            const leftHeight = heightRecursively(currentNode.left);
-            const rightHeight = heightRecursively(currentNode.right);
+            const leftHeight = heightRecursively(node.left);
+            const rightHeight = heightRecursively(node.right);
 
             // Return the maximum of the two heights plus one (for the current node)
             return Math.max(leftHeight, rightHeight) + 1;
@@ -351,7 +352,7 @@ function Tree() {
         preOrder,
         postOrder,
         toArray,
-        height
+        heightOfTree
     };
 }
 
