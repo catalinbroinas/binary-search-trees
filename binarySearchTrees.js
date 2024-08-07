@@ -1,3 +1,13 @@
+// ========================
+// This module defines a factory function `Tree` that creates a binary search tree (BST).
+// It includes methods for tree operations such as:
+// - Building a balanced BST from a sorted array
+// - Inserting and deleting nodes
+// - Traversing the tree in various orders (level-order, in-order, pre-order, post-order)
+// - Calculating tree properties (height, depth)
+// - Checking if the tree is balanced and rebalancing it if needed
+// ========================
+
 import { ArrayMethod } from "./utility.js";
 
 function CreateNode(data, left = null, right = null) {

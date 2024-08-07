@@ -1,3 +1,9 @@
+// ========================
+// This module provides utility functions for array operations:
+// - `sortArray(arr)`: Sorts an array of numbers in ascending order.
+// - `removeDuplicate(arr)`: Removes duplicate values from an array.
+// ========================
+
 function ArrayMethod() {
     // Sort array
     const compareNumbers = (a, b) => a - b;

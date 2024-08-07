@@ -1,3 +1,7 @@
+// ========================
+// This file contains tests for the `binarySearchTrees` modules.
+// ========================
+
 import { Tree } from "./binarySearchTrees.js";
 
 const {
