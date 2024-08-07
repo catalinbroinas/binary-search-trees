@@ -378,6 +378,36 @@ function Tree() {
         return treeHeight - nodeHeight;
     };
 
+    // Check if the tree is balanced
+    const isBalanced = () => {
+        if (root === null) {
+            console.warn('Tree is empty');
+            return true;
+        }
+
+        // Helper function to calculate height and check balance
+        const getHeight = (node) => {
+            if (node === null) return -1;
+
+            // Recursively get the height of left subtrees
+            const leftHeight = getHeight(node.left);
+            if (leftHeight === null) return null;
+
+            // Recursively get the height of right subtrees
+            const rightHeight = getHeight(node.right);
+            if (rightHeight === null) return null;
+
+            // Check if current node is balanced
+            if (Math.abs(leftHeight - rightHeight) > 1) return null;
+
+            // Return the height of the current node
+            return Math.max(leftHeight, rightHeight) + 1;
+        };
+
+        // If getHeight returns null, the tree is unbalanced
+        return getHeight(root) !== null;
+    };
+
     return {
         buildTree,
         prettyPrint,
@@ -391,7 +421,8 @@ function Tree() {
         toArray,
         heightOfTree,
         height,
-        depth
+        depth,
+        isBalanced
     };
 }
 

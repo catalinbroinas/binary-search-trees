@@ -13,7 +13,8 @@ const {
     toArray,
     heightOfTree,
     height,
-    depth
+    depth,
+    isBalanced
 } = Tree();
 
 const myArr = [1, 7, 4, 9, 2, 3, 1, 2, 3, 4, 5, 6, 6, 6, 21, 12];
@@ -66,3 +67,16 @@ const depthNode = depth(node);
 if (node) {
     console.log(`Depth of the "${node.data}" node is ${depthNode}.`);
 }
+
+// Check if the tree is balanced and print the result
+console.log('Tree is:');
+console.log(prettyPrint());
+console.log('The tree is balanced:', isBalanced());
+
+// Delete node 17
+deleteItem(17);
+
+// Check if the tree is balanced and print the result
+console.log('Tree after remove a node is:');
+console.log(prettyPrint());
+console.log('The tree is balanced:', isBalanced());
